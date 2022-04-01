@@ -9,6 +9,10 @@
 
   --main-bg: #e2e8f0;
 
+  --modal-border: #0ea5e9;
+  --modal-bg: rgba(255, 255, 255, 0.9);
+  --modal-text: #171717;
+
   --card-bg: #f8fafc;
   --card-text: #171717;
 
@@ -26,6 +30,7 @@ body {
   display: grid;
   grid-template-rows: 80px minmax(calc(100vh - 160px), auto) 80px;
 }
+
 /* header styles */
 header {
   display: flex;
@@ -93,6 +98,86 @@ main {
 
 .book-status {
   align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* modal styles */
+.modal {
+  visibility: hidden;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--modal-bg);
+  color: var(--modal-text);
+  border: 3px solid var(--modal-border);
+  border-radius: 25px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 35px 5px 0px 5px;
+  height: 25rem;
+  width: 23rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  opacity: 0;
+  transition: all ease-in 0.15s;
+}
+
+.blur {
+  filter: blur(2px);
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.book-form-element {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.modal-text-input {
+  padding: 5px;
+  font-size: 1.2rem;
+}
+
+.book-status-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 25px;
+}
+
+.book-form-buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.book-form-buttons #closeModal,
+.book-form-buttons #addBook {
+  font-size: 1.2rem;
+  padding: 12px 17px;
+  border: none;
+  border-radius: 8px;
 }
 
 /* footer */

@@ -19,8 +19,55 @@
         </svg>
         <h1>My Library</h1>
       </div>
-      <button type="button">Add a book</button>
+      <button type="button" id="openModal">Add a book</button>
     </header>
+    <div class="modal center" id="modal">
+      <form class="book-form">
+        <div class="book-form-element">
+          <label for="bookName">Book name: </label>
+          <input
+            type="text"
+            name="bookName"
+            id="bookName"
+            class="modal-text-input"
+            required
+          />
+        </div>
+        <div class="book-form-element">
+          <label for="bookAuthor">Book author: </label>
+          <input
+            type="text"
+            name="bookAuthor"
+            id="bookAuthor"
+            class="modal-text-input"
+            required
+          />
+        </div>
+        <div class="book-form-element">
+          <label for="bookPages">Book pages: </label>
+          <input
+            type="number"
+            name="bookPages"
+            id="bookPages"
+            class="modal-text-input"
+            required
+          />
+        </div>
+        <div class="book-form-element book-status-container">
+          <label for="bookStatus">Have you read it? </label>
+          <input
+            type="checkbox"
+            name="bookStatus"
+            id="bookStatus"
+            value="true"
+          />
+        </div>
+        <div class="book-form-buttons">
+          <button type="button" id="closeModal">Cancel</button>
+          <button type="button" id="addBook">Add book</button>
+        </div>
+      </form>
+    </div>
     <main>
       <div class="book-card">
         <div class="book-texts">
@@ -28,7 +75,15 @@
           <p class="book-author">J. R. R. Tolkien</p>
           <p class="book-pages">295</p>
         </div>
-        <p class="book-status">Not read</p>
+        <div class="book-status">
+          <p class="book-status-text">Not read</p>
+          <input
+            type="checkbox"
+            name="bookDisplayStatus"
+            id="bookDisplayStatus"
+            value="true"
+          />
+        </div>
       </div>
     </main>
     <footer>
