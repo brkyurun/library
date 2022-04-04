@@ -6,6 +6,7 @@
   --header-svg: rgba(250, 250, 249, 0.7);
   --header-button-bg: #22c55e;
   --header-button-text: #fafaf9;
+  --header-button-hover-bg: #10b981;
 
   --main-bg: #e2e8f0;
 
@@ -15,6 +16,9 @@
 
   --card-bg: #f8fafc;
   --card-text: #171717;
+  --card-remove-button-bg: #dc2626;
+  --card-remove-button-text: #fafaf9;
+  --card-remove-button-hover-bg: red;
 
   --footer-bg: #0ea5e9;
   --footer-text: #fafaf9;
@@ -60,10 +64,18 @@ header button {
   padding: 5px 15px;
   border: none;
   border-radius: 7px;
+  cursor: pointer;
   font-size: 1.2rem;
   font-weight: bold;
   background-color: var(--header-button-bg);
   color: var(--header-button-text);
+  transition: all ease-out 0.35s;
+}
+
+header button:hover {
+  background-color: var(--header-button-hover-bg);
+  transform: scale(1.04);
+  border-radius: 17px;
 }
 
 /* main content styles */
@@ -102,6 +114,24 @@ main {
   align-items: center;
   justify-content: center;
   gap: 15px;
+}
+
+.book-card button {
+  height: 50px;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: var(--card-remove-button-bg);
+  color: var(--card-remove-button-text);
+  transition: all ease-out 0.35s;
+}
+
+.book-card button:hover {
+  background-color: var(--card-remove-button-hover-bg);
+  transform: scale(1.04);
 }
 
 /* modal styles */

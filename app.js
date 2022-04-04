@@ -5,7 +5,30 @@ const addBookButton = document.querySelector("#addBook");
 const header = document.querySelector("header");
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
+const removeButtons = [...document.querySelectorAll(".remove-book")];
 let firstRun = null;
+let myLibrary = [
+  {
+    name: "The Lord of the Rings",
+    author: "J. R. R. Tolkien",
+    pages: 596,
+    readStatus: false,
+  },
+  {
+    name: "The Hobbit",
+    author: "J. R. R. Tolkien",
+    pages: 295,
+    readStatus: false,
+  },
+  {
+    name: "It",
+    author: "Stephen King",
+    pages: 1138,
+    readStatus: true,
+  },
+];
+
+updateDisplay(myLibrary);
 
 openModal.addEventListener("click", () => {
   addBlur();
@@ -29,26 +52,13 @@ addBookButton.addEventListener("click", () => {
   modal.classList.remove("is-visible");
 });
 
-let myLibrary = [
-  {
-    name: "The Lord of the Rings",
-    author: "J. R. R. Tolkien",
-    pages: 596,
-    readStatus: false,
-  },
-  {
-    name: "The Hobbit",
-    author: "J. R. R. Tolkien",
-    pages: 295,
-    readStatus: false,
-  },
-  {
-    name: "It",
-    author: "Stephen King",
-    pages: 1138,
-    readStatus: true,
-  },
-];
+for (let button of removeButtons) {
+  button.addEventListener("click", () => {
+    const index = button.parentNode.dataset.index;
+    myLibrary.splice(index, 1);
+    button.parentNode.remove();
+  });
+}
 
 function Book(name, author, pages, readStatus) {
   this.name = name;
@@ -89,8 +99,11 @@ function createBookCard(object) {
   const bookAuthor = document.createElement("p");
   const bookPages = document.createElement("p");
   const bookStatus = document.createElement("p");
+  const bookRemove = document.createElement("button");
+  const bookIndex = myLibrary.findIndex((book) => book.name === object.name);
 
   bookCard.className = "book-card";
+  bookCard.dataset.index = bookIndex;
   bookTexts.className = "book-texts";
 
   bookTitle.className = "book-title";
@@ -112,8 +125,17 @@ function createBookCard(object) {
     bookStatus.textContent = "Haven't read 👎🏻";
   }
 
+  bookRemove.className = "book-remove";
+  bookRemove.textContent = "Remove";
+  bookRemove.addEventListener("click", () => {
+    const index = bookRemove.parentNode.dataset.index;
+    myLibrary.splice(index, 1);
+    bookRemove.parentNode.remove();
+  });
+
   bookCard.appendChild(bookTexts);
   bookCard.appendChild(bookStatus);
+  bookCard.appendChild(bookRemove);
   bookGrid.appendChild(bookCard);
 }
 
