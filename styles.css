@@ -19,6 +19,9 @@
   --card-remove-button-bg: #dc2626;
   --card-remove-button-text: #fafaf9;
   --card-remove-button-hover-bg: red;
+  --card-status-button-bg: #0ea5e9;
+  --card-status-button-text: #fafaf9;
+  --card-status-button-hover-bg: dodgerblue;
 
   --footer-bg: #0ea5e9;
   --footer-text: #fafaf9;
@@ -110,10 +113,13 @@ main {
 
 .book-status {
   align-self: center;
+}
+
+.book-buttons-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 15px;
+  width: 260px;
+  justify-content: space-around;
 }
 
 .book-card button {
@@ -132,6 +138,15 @@ main {
 .book-card button:hover {
   background-color: var(--card-remove-button-hover-bg);
   transform: scale(1.04);
+}
+
+.book-card button:last-of-type {
+  background-color: var(--card-status-button-bg);
+  color: var(--card-status-button-text);
+}
+
+.book-card button:last-of-type:hover {
+  background-color: var(--card-status-button-hover-bg);
 }
 
 /* modal styles */
