@@ -2,6 +2,7 @@ const modal = document.querySelector(".modal");
 const openModal = document.querySelector("#openModal");
 const closeModal = document.querySelector("#closeModal");
 const addBookButton = document.querySelector("#addBook");
+const bookForm = document.querySelector(".book-form");
 const header = document.querySelector("header");
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
@@ -20,10 +21,12 @@ closeModal.addEventListener("click", () => {
 });
 
 addBookButton.addEventListener("click", () => {
-  const bookName = document.querySelector("#bookName").value;
+  if (!checkValidity()) {
+    alert("Please fill all the fields marked with *.");
+    return;
+  }
 
   addToLibrary();
-  alert(`${bookName} has been added to your collection 😁.`);
   updateDisplay(myLibrary);
   removeBlur();
   clearFormFields();
@@ -47,13 +50,19 @@ class Book {
 }
 
 function addToLibrary() {
-  const bookName = document.querySelector("#bookName").value;
-  const bookAuthor = document.querySelector("#bookAuthor").value;
-  const bookPages = document.querySelector("#bookPages").value;
+  const bookName = document.querySelector("#bookName");
+  const bookAuthor = document.querySelector("#bookAuthor");
+  const bookPages = document.querySelector("#bookPages");
   const bookStatus = document.querySelector("#bookStatus").checked;
 
-  let book = new Book(bookName, bookAuthor, bookPages, bookStatus);
+  let book = new Book(
+    bookName.value,
+    bookAuthor.value,
+    bookPages.value,
+    bookStatus
+  );
   myLibrary.push(book);
+  alert(`${bookName.value} has been added to your collection 😁.`);
 }
 
 function addBlur() {
@@ -156,4 +165,13 @@ function clearFormFields() {
     text.value = "";
   }
   bookStatus.checked = false;
+}
+
+function checkValidity() {
+  const bookName = document.querySelector("#bookName").validity.valid;
+  const bookAuthor = document.querySelector("#bookAuthor").validity.valid;
+  const bookPages = document.querySelector("#bookPages").validity.valid;
+  if (!bookName || !bookAuthor || !bookPages) return false;
+
+  return true;
 }
